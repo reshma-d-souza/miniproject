@@ -1,50 +1,129 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>In-Store Navigation System</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>In-Store Navigation — Demo</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <!-- TITLE -->
-    <h1 id="title">In-Store Navigation</h1>
-
-    <!-- OPEN/CLOSE TIME -->
-    <div id="info-bar">
-        <span id="open-time">Mall opens at 9:00 AM</span>
-        <span id="close-time">Mall closes at 10:00 PM</span>
+  <header class="topbar">
+    <div class="brand">Mall Navigator</div>
+    <div class="top-controls">
+      <div class="time" id="mallTime">Open: 10:00 — Close: 21:00</div>
+      <div class="lang">
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="kn">KN</button>
+        <button class="lang-btn" data-lang="hi">HI</button>
+      </div>
+      <button id="voiceBtn" title="Voice">🎤</button>
+      <button id="shopkeeperToggle" class="muted">Shopkeeper</button>
     </div>
+  </header>
 
-    <!-- FLOOR DISPLAY -->
-    <h2 id="floor-title">Floor 1</h2>
+  <main class="layout">
+    <aside class="left-col">
+      <section class="card">
+        <h3 id="mallName">City Center Mall</h3>
+        <p id="timings">Open 10:00 — Close 21:00</p>
+        <div class="emergency-row">
+          <button id="emergencyBtn" class="danger">EMERGENCY</button>
+          <small id="emgHint">Nearest exit routing + alarm</small>
+        </div>
+      </section>
 
-    <!-- MAP GRID -->
-    <div id="map"></div>
+      <section class="card">
+        <h4>Floors</h4>
+        <div id="floorBtns" class="floor-grid"></div>
+      </section>
 
-    <!-- CONTROLS -->
-    <div class="controls">
-        <button class="btn-primary" onclick="navigate()">Start Navigation</button>
-        <button class="btn-secondary" onclick="toggleEditMode()">Shopkeeper Mode</button>
+      <section class="card">
+        <input id="searchBox" placeholder="Search shops or items" />
+        <div id="searchResults" class="search-results"></div>
+      </section>
+
+      <section class="card">
+        <h4>Selected Items</h4>
+        <ul id="cartList"></ul>
+        <div class="checkout-row">
+          <div id="total">Total: ₹0</div>
+          <button id="checkoutBtn" class="btn-primary">Checkout</button>
+        </div>
+      </section>
+    </aside>
+
+    <section class="center-col">
+      <div class="map-header">
+        <div>
+          <label>Current:</label>
+          <select id="currentSelect"></select>
+          <label>Destination:</label>
+          <select id="destSelect"></select>
+          <button id="routeBtn" class="btn-primary">Go</button>
+        </div>
+
+        <div class="map-actions">
+          <label><input id="animToggle" type="checkbox" checked /> Animate</label>
+          <label><input id="showWash" type="checkbox" checked /> Washrooms</label>
+        </div>
+      </div>
+
+      <div id="map" class="map-grid" aria-live="polite"></div>
+
+      <div class="legend card">
+        <span class="legend-item store">Store</span>
+        <span class="legend-item path">Path</span>
+        <span class="legend-item esc">Escalator/Lift</span>
+        <span class="legend-item wash">Washroom</span>
+        <span class="legend-item exit">Exit</span>
+      </div>
+    </section>
+
+    <aside class="right-col">
+      <section class="card" id="shopCard">
+        <h3>Shop Details</h3>
+        <div id="shopDetails">Select a shop to view details.</div>
+      </section>
+
+      <section class="card">
+        <h4>Options</h4>
+        <label><input id="nearestExitBtn" type="checkbox" /> Highlight nearest emergency exit</label>
+      </section>
+
+      <section class="card">
+        <h4>Feedback</h4>
+        <div id="ratingRow">Rate this mall: <span id="stars">★★★★★</span></div>
+      </section>
+    </aside>
+  </main>
+
+  <footer class="footer">© Mall Navigator — Demo</footer>
+
+  <!-- Shop modal -->
+  <div id="shopModal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <button class="close" id="closeShopModal">✕</button>
+      <div id="modalContent"></div>
     </div>
+  </div>
 
-    <!-- FLOOR SWITCH -->
-    <div class="controls">
-        <button class="btn-green" onclick="loadFloor(1)">Floor 1</button>
-        <button class="btn-green" onclick="loadFloor(2)">Floor 2</button>
-        <button class="btn-green" onclick="loadFloor(3)">Floor 3</button>
+  <!-- Payment modal -->
+  <div id="paymentModal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <button class="close" id="closePayment">✕</button>
+      <h3>Checkout</h3>
+      <div id="paymentContent"></div>
+      <div class="pay-options">
+        <button id="payUPI" class="btn-primary">Pay via UPI</button>
+        <button id="payCard" class="btn-secondary">Pay with Card</button>
+        <button id="payCash" class="btn-green">Pay at Counter</button>
+      </div>
     </div>
+  </div>
 
-    <!-- LANGUAGE SWITCH -->
-    <div class="lang-buttons">
-        <button onclick="setLanguage('en')">English</button>
-        <button onclick="setLanguage('kn')">Kannada</button>
-        <button onclick="setLanguage('hi')">Hindi</button>
-    </div>
+  <!-- moving person element -->
+  <div id="person" class="person hidden">🧍</div>
 
-    <!-- SCRIPT -->
-    <script src="script.js"></script>
-
+  <script src="script.js"></script>
 </body>
 </html>
