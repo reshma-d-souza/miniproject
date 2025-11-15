@@ -1,74 +1,50 @@
-<!doctype html>
-<h4>Floors</h4>
-<div id="floorBtns" class="floor-grid"></div>
-</section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>In-Store Navigation System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+    <!-- TITLE -->
+    <h1 id="title">In-Store Navigation</h1>
 
-<section class="search card">
-<input id="searchBox" placeholder="Search items or stores" />
-<div id="searchResults"></div>
-</section>
+    <!-- OPEN/CLOSE TIME -->
+    <div id="info-bar">
+        <span id="open-time">Mall opens at 9:00 AM</span>
+        <span id="close-time">Mall closes at 10:00 PM</span>
+    </div>
 
+    <!-- FLOOR DISPLAY -->
+    <h2 id="floor-title">Floor 1</h2>
 
-<section class="item-list card">
-<h4>Selected Items</h4>
-<ul id="selectedItems"></ul>
-<div class="checkout-row">
-<span id="totalLabel">Total: ₹0</span>
-<button id="checkoutBtn">Checkout</button>
-</div>
-</section>
-</aside>
+    <!-- MAP GRID -->
+    <div id="map"></div>
 
+    <!-- CONTROLS -->
+    <div class="controls">
+        <button class="btn-primary" onclick="navigate()">Start Navigation</button>
+        <button class="btn-secondary" onclick="toggleEditMode()">Shopkeeper Mode</button>
+    </div>
 
-<section class="map-area">
-<div class="map-top">
-<div class="loc-controls">
-<label>Current:</label>
-<select id="currentSelect"></select>
-<label>Destination:</label>
-<select id="destSelect"></select>
-<button id="routeBtn">Go</button>
-<label>Animation</label>
-<input id="animToggle" type="checkbox" checked />
-</div>
-</div>
+    <!-- FLOOR SWITCH -->
+    <div class="controls">
+        <button class="btn-green" onclick="loadFloor(1)">Floor 1</button>
+        <button class="btn-green" onclick="loadFloor(2)">Floor 2</button>
+        <button class="btn-green" onclick="loadFloor(3)">Floor 3</button>
+    </div>
 
+    <!-- LANGUAGE SWITCH -->
+    <div class="lang-buttons">
+        <button onclick="setLanguage('en')">English</button>
+        <button onclick="setLanguage('kn')">Kannada</button>
+        <button onclick="setLanguage('hi')">Hindi</button>
+    </div>
 
-<div id="map" class="map-grid"></div>
+    <!-- SCRIPT -->
+    <script src="script.js"></script>
 
-
-<div class="map-legend card">
-<div>Legend: <span class="legend store">Store</span> <span class="legend path">Path</span> <span class="legend esc">Escalator</span> <span class="legend wash">Washroom</span></div>
-</div>
-</section>
-
-
-<aside class="right-panel">
-<section class="card shop-details" id="shopDetails">
-<h3>Shop Details</h3>
-<div id="shopContent">Select a shop to see details.</div>
-</section>
-
-
-<section class="card options">
-<h4>Filters & Options</h4>
-<label><input type="checkbox" id="showWashrooms" checked /> Show washrooms</label>
-<label><input type="checkbox" id="showEsc" checked /> Show escalators/lifts</label>
-</section>
-
-
-<section class="card feedback">
-<h4>Shop Experience</h4>
-<div id="ratingRow">Rate: <span id="stars">★★★★★</span></div>
-</section>
-</aside>
-</main>
-
-
-<footer class="footer">© Mall Navigator — Demo</footer>
-
-
-<script src="script.js"></script>
 </body>
 </html>
