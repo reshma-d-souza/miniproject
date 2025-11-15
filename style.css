@@ -1,0 +1,165 @@
+/* -------------------------------------------------
+   IN-STORE NAVIGATION SYSTEM – STYLE.CSS
+   Clean Modern Block UI
+---------------------------------------------------*/
+
+/* GLOBAL */
+body {
+    margin: 0;
+    padding: 0;
+    background: #f3f4f6;
+    font-family: "Segoe UI", sans-serif;
+}
+
+h1 {
+    text-align: center;
+    padding: 20px;
+    margin: 0;
+    background: #111827;
+    color: #fff;
+    font-size: 26px;
+}
+
+#info-bar {
+    text-align: center;
+    font-size: 15px;
+    padding: 10px;
+}
+
+#info-bar span {
+    display: block;
+    margin: 4px 0;
+    color: #374151;
+}
+
+/* FLOOR TITLE */
+#floor-title {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 10px;
+    color: #1f2937;
+}
+
+/* MAP GRID */
+#map {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 12px;
+}
+
+/* NODE STYLING */
+.node {
+    background: #e5e7eb;
+    padding: 18px;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s;
+    border: 2px solid transparent;
+}
+
+.node:hover {
+    background: #d1d5db;
+    transform: scale(1.05);
+}
+
+/* CONTROLS */
+.controls {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    gap: 12px;
+}
+
+button {
+    padding: 12px 18px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    transition: 0.25s;
+}
+
+/* Main Buttons */
+.btn-primary {
+    background: #2563eb;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #1d4ed8;
+}
+
+.btn-secondary {
+    background: #6b7280;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #4b5563;
+}
+
+.btn-green {
+    background: #10b981;
+    color: white;
+}
+
+.btn-green:hover {
+    background: #059669;
+}
+
+/* LANGUAGE BUTTONS */
+.lang-buttons {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.lang-buttons button {
+    margin: 5px;
+    padding: 10px 16px;
+    background: #f59e0b;
+    color: #fff;
+}
+
+.lang-buttons button:hover {
+    background: #d97706;
+}
+
+/* ANIMATION (highlighting nodes when navigating) */
+@keyframes pulse {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.1); background: #3b82f6; color: #fff; }
+    100% { transform: scale(1); }
+}
+
+.node.active {
+    animation: pulse 1s ease-in-out infinite;
+}
+
+/* EDIT MODE INDICATOR */
+.edit-mode {
+    background: #b91c1c !important;
+    color: #fff !important;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+    #map { grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); }
+    
+    .node {
+        font-size: 12px;
+        padding: 14px;
+    }
+
+    button {
+        font-size: 13px;
+        padding: 10px 14px;
+    }
+}
